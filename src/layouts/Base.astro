@@ -3,16 +3,10 @@ import '../styles/global.css';
 import site from '../data/site.json';
 
 interface Props { title?: string; description?: string; image?: string; }
-const { title, description = site.deskripsi, image = '/images/og-image.jpg' } = Astro.props;
+const { title, description = site.deskripsi, image = site.og_image || '/favicon.svg' } = Astro.props;
 const fullTitle = title ? `${title} | Solo Logo Indonesia` : 'Solo Logo Indonesia | Produsen Herbisida, Insektisida, dan Fungisida';
 const path = Astro.url.pathname;
-const nav = [
-  { href: '/', label: 'Beranda' },
-  { href: '/tentang/', label: 'Tentang Kami' },
-  { href: '/produk/', label: 'Produk' },
-  { href: '/berita/', label: 'Berita' },
-  { href: '/karier/', label: 'Karier' },
-];
+const nav = site.menu;
 const isCurrent = (href: string) => href === '/' ? path === '/' : path.startsWith(href);
 ---
 <!doctype html>
@@ -28,27 +22,24 @@ const isCurrent = (href: string) => href === '/' ? path === '/' : path.startsWit
   <meta property="og:image" content={new URL(image, Astro.site)}>
   <meta property="og:locale" content="id_ID">
   <meta property="og:type" content="website">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href={site.ikon || '/favicon.svg'}>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="topbar"><div class="wrap">
-    <span>{site.jam_kerja}</span>
-    <span>Kantor {site.kantor_telepon} &nbsp;|&nbsp; Pabrik {site.pabrik_telepon}</span>
-  </div></div>
   <header class="header"><div class="wrap">
     <a href="/" class="brand" aria-label="Solo Logo Indonesia, ke beranda">
-      <span class="brand-mark">SLI</span>
-      <span class="brand-text"><strong>SOLO LOGO</strong><span>INDONESIA</span></span>
+      {site.logo
+        ? <img src={site.logo} alt="Solo Logo Indonesia" style="height:48px;width:auto" />
+        : <><span class="brand-mark">SLI</span><span class="brand-text"><strong>SOLO LOGO</strong><span>INDONESIA</span></span></>}
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="Buka menu">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <nav class="nav" id="nav" aria-label="Menu utama">
       {nav.map((n) => <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a>)}
-      <a href="/kontak/" class="btn btn-hijau">Hubungi Kami</a>
+      {site.menu_tombol?.label && <a href={site.menu_tombol.link} class="btn btn-hijau">{site.menu_tombol.label}</a>}
     </nav>
   </div></header>
 

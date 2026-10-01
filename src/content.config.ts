@@ -44,4 +44,13 @@ const lowongan = defineCollection({
   }),
 });
 
-export const collections = { produk, berita, lowongan };
+const halaman = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/halaman' }),
+  schema: z.object({
+    judul: z.string(),
+    deskripsi: z.string().optional().default(''),
+    blocks: z.array(z.object({ type: z.string() }).passthrough()).optional().default([]),
+  }),
+});
+
+export const collections = { produk, berita, lowongan, halaman };

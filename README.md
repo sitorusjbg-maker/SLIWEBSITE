@@ -12,13 +12,18 @@ npm run cms          # (terminal kedua) admin lokal di http://localhost:4321/adm
 
 ## Struktur konten (semua bisa diedit lewat /admin/)
 
-| Isi | Lokasi file |
-| --- | --- |
-| Produk (29) | `src/content/produk/*.md` |
-| Berita | `src/content/berita/*.md` |
-| Lowongan | `src/content/lowongan/*.md` |
-| Alamat, telepon, WhatsApp, foto hero | `src/data/site.json` |
-| Foto yang diunggah lewat admin | `public/images/uploads/` |
+| Menu admin | Isi | Lokasi file |
+| --- | --- | --- |
+| Halaman | Beranda, Tentang Kami, Kontak, dan halaman baru, disusun dari blok | `src/content/halaman/*.md` |
+| Berita | Artikel | `src/content/berita/*.md` |
+| Produk | 29 produk | `src/content/produk/*.md` |
+| Lowongan | Lowongan kerja | `src/content/lowongan/*.md` |
+| Pengaturan | Logo, ikon, menu, alamat, WhatsApp, medsos, deskripsi kategori | `src/data/site.json` |
+
+Jenis blok: Hero, Judul halaman, Teks, Teks dengan foto, Galeri, Daftar layanan, Kategori produk,
+Produk unggulan, Berita terbaru, Banner lowongan, Ajakan dengan tombol, Alamat dan form kontak.
+Field teks punya batas karakter supaya tampilan tetap rapi. Nama halaman `beranda`, `produk`,
+`berita`, dan `karier` sudah dipakai sistem.
 
 ## Online-kan (Cloudflare Pages)
 
@@ -39,5 +44,4 @@ dan hasil Google tidak putus.
 - Data produk selain Pentacol dan Tufordi (bahan aktif, sasaran, deskripsi).
 - Semua foto (lihat dokumen "Daftar Kebutuhan Gambar").
 - Nomor WhatsApp sales di Pengaturan, dipakai form kontak dan tombol tanya produk.
-- `public/images/og-image.jpg` (1200×630) untuk tampilan saat link dibagikan.
-- Logo asli: ganti tanda "SLI" di `src/layouts/Base.astro` dan `public/favicon.svg`.
+- Logo, ikon, dan gambar share: upload lewat Pengaturan di /admin/.

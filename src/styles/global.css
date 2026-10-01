@@ -40,8 +40,6 @@ p { margin: 0; }
 .btn-garis { border-color: currentColor; color: inherit; background: transparent; }
 
 /* Header */
-.topbar { background: var(--hijau-tua); color: #D8E2D9; font-size: 0.8rem; }
-.topbar .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 24px; padding-block: 8px; }
 .header { background: #fff; border-bottom: 1px solid var(--garis); position: sticky; top: 0; z-index: 10; }
 .header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 76px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--hijau); }
@@ -160,3 +158,22 @@ p { margin: 0; }
 .page-head h1 { color: #fff; }
 .page-head p { color: #C9D6CC; margin-top: 12px; max-width: 40em; }
 .page-head .breadcrumb, .page-head .breadcrumb a { color: #A9C0B0; }
+
+/* Pengaman teks panjang */
+h1, h2, h3, p, li, dd, figcaption, .prose { overflow-wrap: anywhere; }
+.clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.produk-card h3, .berita-card h3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.layanan-list p { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.prose a { word-break: break-all; }
+.prose table { display: block; overflow-x: auto; }
+.kat-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+/* Blok tambahan */
+.teks-foto { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: center; }
+.teks-foto.foto-kiri .teks-foto-img { order: -1; }
+.teks-foto-img { aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--pasir); }
+.teks-foto-img img { width: 100%; height: 100%; object-fit: cover; }
+.galeri-item { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.galeri-item img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 12px; }
+.ajakan { background: #fff; border: 1px solid var(--garis); border-radius: 18px; padding: 36px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+.section + .section { padding-top: 0; }
