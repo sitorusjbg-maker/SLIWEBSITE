@@ -1,0 +1,115 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Foto from '../components/Foto.astro';
+import Kontak from '../components/Kontak.astro';
+import site from '../data/site.json';
+import { kategoriInfo } from '../data/kategori';
+
+const produk = await getCollection('produk');
+const unggulan = produk.filter((p) => p.data.unggulan);
+const berita = (await getCollection('berita', (b) => !b.data.draft))
+  .sort((a, b) => b.data.tanggal.valueOf() - a.data.tanggal.valueOf()).slice(0, 3);
+const lowongan = await getCollection('lowongan', (l) => l.data.aktif);
+const fmt = (d: Date) => d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base>
+  <section class="hero"><div class="wrap">
+    <div>
+      <h1>{site.tagline}</h1>
+      <p>{site.deskripsi}</p>
+      <div class="actions">
+        <a href="/produk/" class="btn btn-kuning">Lihat katalog produk</a>
+        <a href="#kontak" class="btn btn-garis">Konsultasi dengan tim kami</a>
+      </div>
+    </div>
+    <div class="hero-img"><Foto src={site.hero_gambar} alt="Lahan perkebunan" label="Foto hero belum diunggah" /></div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="section-head">
+      <h2>Pilih berdasarkan kebutuhan lahan</h2>
+      <a href="/produk/">Semua produk</a>
+    </div>
+    <div class="grid">
+      {Object.entries(kategoriInfo).map(([nama, k]) => {
+        const n = produk.filter((p) => p.data.kategori === nama).length;
+        return (
+          <a class="kat" href={`/produk/#${k.slug}`}>
+            <span class="small">{n} produk</span>
+            <h3>{nama}</h3>
+            <p>{k.desc}</p>
+          </a>
+        );
+      })}
+    </div>
+  </div></section>
+
+  {unggulan.length > 0 && (
+    <section class="section" style="padding-top:0"><div class="wrap">
+      <div class="section-head"><h2>Produk unggulan</h2></div>
+      {unggulan.map((p) => (
+        <article class="unggulan">
+          <div class="foto"><Foto src={p.data.gambar} alt={`Kemasan ${p.data.nama}`} label={p.data.nama} /></div>
+          <div class="isi">
+            <div class="tags">
+              {p.data.baru && <span class="tag tag-baru">Produk baru</span>}
+              <span class="tag">{p.data.kategori}</span>
+            </div>
+            <h3 style="font-size:1.9rem">{p.data.nama}</h3>
+            {p.data.ringkasan && <p class="muted">{p.data.ringkasan}</p>}
+            <dl class="spek">
+              {p.data.bahan_aktif && <div><dt>Bahan aktif</dt><dd>{p.data.bahan_aktif}</dd></div>}
+              {p.data.sasaran && <div><dt>Gulma sasaran</dt><dd class="latin">{p.data.sasaran.split(',').slice(0, 4).join(',')}{p.data.sasaran.split(',').length > 4 ? ', dan lainnya' : ''}</dd></div>}
+            </dl>
+            <a href={`/produk/${p.id}/`}>Lihat detail {p.data.nama}</a>
+          </div>
+        </article>
+      ))}
+    </div></section>
+  )}
+
+  <section class="band"><div class="wrap section">
+    <div class="layanan">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <h2>Dari formulasi sampai pendampingan di lahan</h2>
+        <p class="muted">Pabrik kami di Cikande menangani produksi, pengujian mutu, dan tooling untuk mitra yang memiliki merek sendiri.</p>
+      </div>
+      <div class="layanan-list">
+        <div><h3>Produksi pestisida</h3><p>Diproduksi di pabrik sendiri dengan laboratorium internal, dan diuji melalui pusat pengujian mutu nasional.</p></div>
+        <div><h3>Pesticide tooling</h3><p>Produksi untuk perusahaan dengan merek sendiri, diawasi dengan standar mutu yang sama dengan produk kami.</p></div>
+        <div><h3>Riset dan pengembangan</h3><p>Pengembangan formulasi baru dan uji efikasi untuk menjawab masalah gulma, hama, dan penyakit di lapangan.</p></div>
+        <div><h3>Pelatihan lapangan</h3><p>Pendampingan petani agar pestisida digunakan dengan aman, tepat dosis, dan optimal.</p></div>
+      </div>
+    </div>
+  </div></section>
+
+  {berita.length > 0 && (
+    <section class="section"><div class="wrap">
+      <div class="section-head"><h2>Kabar dari lapangan</h2><a href="/berita/">Semua berita</a></div>
+      <div class="grid">
+        {berita.map((b) => (
+          <a class="berita-card" href={`/berita/${b.id}/`}>
+            <div class="cover"><Foto src={b.data.cover} alt="" label="Berita SLI" /></div>
+            <span class="small">{fmt(b.data.tanggal)}</span>
+            <h3>{b.data.judul}</h3>
+          </a>
+        ))}
+      </div>
+    </div></section>
+  )}
+
+  {lowongan.length > 0 && (
+    <section class="section" style={berita.length ? 'padding-top:0' : ''}><div class="wrap">
+      <div class="karier-band">
+        <div>
+          <p class="small" style="color:#3D3209;font-weight:600">Kami sedang merekrut</p>
+          <h2>{lowongan[0].data.posisi}, {lowongan[0].data.penempatan}</h2>
+        </div>
+        <a href="/karier/" class="btn btn-hijau">Lihat lowongan</a>
+      </div>
+    </div></section>
+  )}
+
+  <Kontak />
+</Base>

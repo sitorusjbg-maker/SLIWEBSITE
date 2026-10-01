@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+---
+<Base title="Tentang Kami">
+  <section class="page-head"><div class="wrap"><h1>Tentang Solo Logo Indonesia</h1><p>{site.deskripsi}</p></div></section>
+  <section class="section"><div class="wrap">
+    <div class="layanan">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <h2>Apa yang kami kerjakan</h2>
+        <p class="muted">Kantor pusat kami berada di Kelapa Gading, Jakarta Utara. Produksi dilakukan di pabrik kami di Kawasan Industri Cikande, Serang, Banten.</p>
+      </div>
+      <div class="layanan-list">
+        <div><h3>Produksi pestisida</h3><p>Berbagai jenis pestisida diproduksi di pabrik sendiri dengan laboratorium internal. Produk juga diuji melalui pusat pengujian mutu nasional.</p></div>
+        <div><h3>Pesticide tooling</h3><p>Layanan produksi untuk perusahaan yang memiliki merek sendiri. Seluruh proses diawasi dengan standar mutu yang sama dengan produk kami.</p></div>
+        <div><h3>Riset dan pengembangan</h3><p>Pengembangan formulasi baru dan uji efikasi untuk menjawab masalah gulma, hama, dan penyakit di lapangan.</p></div>
+        <div><h3>Pelatihan lapangan</h3><p>Pendampingan petani di lapangan agar pestisida digunakan dengan aman dan optimal.</p></div>
+      </div>
+    </div>
+  </div></section>
+</Base>

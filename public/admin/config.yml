@@ -1,0 +1,96 @@
+# Ganti repo di bawah dengan repo GitHub website SLI, contoh: sli-indonesia/website
+backend:
+  name: github
+  repo: GANTI/NAMA-REPO
+  branch: main
+  base_url: https://GANTI-OAUTH-WORKER.workers.dev
+
+# Untuk mencoba di komputer sendiri: jalankan `npm run cms` dan `npm run dev`, lalu buka http://localhost:4321/admin/
+local_backend: true
+
+locale: id
+publish_mode: simple
+media_folder: public/images/uploads
+public_folder: /images/uploads
+site_url: https://solologoindonesia.com
+logo_url: /favicon.svg
+
+collections:
+  - name: berita
+    label: Berita
+    label_singular: Artikel
+    folder: src/content/berita
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: judul
+    summary: "{{judul}} ({{tanggal}})"
+    sortable_fields: [tanggal, judul]
+    fields:
+      - { label: Judul, name: judul, widget: string }
+      - { label: Tanggal, name: tanggal, widget: datetime, date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD" }
+      - { label: Foto cover, name: cover, widget: image, required: false }
+      - { label: Ringkasan (1-2 kalimat), name: ringkasan, widget: text, required: false }
+      - { label: Simpan sebagai draft (belum tayang), name: draft, widget: boolean, default: false }
+      - { label: Isi artikel, name: body, widget: markdown }
+
+  - name: produk
+    label: Produk
+    label_singular: Produk
+    folder: src/content/produk
+    create: true
+    slug: "{{slug}}"
+    identifier_field: nama
+    summary: "{{nama}} ({{kategori}})"
+    sortable_fields: [nama, kategori]
+    view_groups:
+      - { label: Kategori, field: kategori }
+    fields:
+      - { label: Nama produk, name: nama, widget: string }
+      - label: Kategori
+        name: kategori
+        widget: select
+        options: [Herbisida Selektif, Herbisida Sistemik, Herbisida Kontak, Herbisida Kontak Sistemik, Insektisida, Fungisida]
+      - { label: Bahan aktif, name: bahan_aktif, widget: string, required: false, hint: "Contoh: Parakuat diklorida 280 g/l + Diuron 200 g/l" }
+      - { label: Sasaran (gulma / hama / penyakit), name: sasaran, widget: text, required: false, hint: "Pisahkan dengan koma" }
+      - { label: Ringkasan singkat, name: ringkasan, widget: string, required: false }
+      - { label: Foto kemasan (1200x1200, latar putih), name: gambar, widget: image, required: false }
+      - { label: Tampilkan di homepage (produk unggulan), name: unggulan, widget: boolean, default: false }
+      - { label: Tandai sebagai produk baru, name: baru, widget: boolean, default: false }
+      - { label: Deskripsi lengkap, name: body, widget: markdown, required: false }
+
+  - name: lowongan
+    label: Lowongan
+    label_singular: Lowongan
+    folder: src/content/lowongan
+    create: true
+    slug: "{{slug}}"
+    identifier_field: posisi
+    fields:
+      - { label: Posisi, name: posisi, widget: string }
+      - { label: Penempatan, name: penempatan, widget: string }
+      - { label: Masih dibuka, name: aktif, widget: boolean, default: true }
+      - { label: Detail tugas dan kualifikasi, name: body, widget: markdown }
+
+  - name: pengaturan
+    label: Pengaturan
+    editor: { preview: false }
+    files:
+      - label: Info perusahaan dan kontak
+        name: site
+        file: src/data/site.json
+        fields:
+          - { label: Nama perusahaan, name: nama_perusahaan, widget: string }
+          - { label: Judul besar homepage, name: tagline, widget: text }
+          - { label: Deskripsi singkat perusahaan, name: deskripsi, widget: text }
+          - { label: Foto hero homepage, name: hero_gambar, widget: image, required: false }
+          - { label: Nomor WhatsApp sales (format 628xxx), name: whatsapp, widget: string, required: false }
+          - { label: Nomor WhatsApp rekrutmen (format 628xxx), name: whatsapp_karier, widget: string }
+          - { label: Email, name: email, widget: string, required: false }
+          - { label: Alamat kantor, name: kantor_alamat, widget: text }
+          - { label: Telepon kantor, name: kantor_telepon, widget: string }
+          - { label: Alamat pabrik, name: pabrik_alamat, widget: text }
+          - { label: Telepon pabrik, name: pabrik_telepon, widget: string }
+          - { label: Jam operasional, name: jam_kerja, widget: string }
+          - { label: Instagram, name: instagram, widget: string }
+          - { label: Facebook, name: facebook, widget: string }
+          - { label: YouTube, name: youtube, widget: string }
