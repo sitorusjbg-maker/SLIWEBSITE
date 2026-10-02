@@ -1,9 +1,9 @@
 {
   "nama_perusahaan": "PT Solo Logo Indonesia",
-  "deskripsi": "Herbisida, insektisida, dan fungisida yang diproduksi dan diuji di pabrik sendiri, didukung pendampingan teknis langsung untuk petani di lapangan.",
+  "deskripsi": "Jasa toll manufacturing pestisida: formulasi dan pengemasan SL, EC, SC, dan WP di Cikande, Banten.",
   "whatsapp": "",
   "whatsapp_karier": "6281290538143",
-  "email": "",
+  "email": "pt.solologo@gmail.com",
   "kantor_alamat": "Jl. Sumagung 3 No.22 12, RT.12/RW.19, Klp. Gading Tim., Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta 14240",
   "kantor_telepon": "(021) 2245 9895",
   "pabrik_alamat": "Jl. Pancatama No. I Kav. VII, Kp. Gembar, RT 004/RW 002, Desa Leuwilimus, Kec. Cikande, Kab. Serang, Banten 42186",
@@ -51,7 +51,11 @@
       "link": "/tentang/"
     },
     {
-      "label": "Produk",
+      "label": "Layanan Tolling",
+      "link": "/layanan/"
+    },
+    {
+      "label": "Produk SLI",
       "link": "/produk/"
     },
     {

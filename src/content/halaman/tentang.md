@@ -1,24 +1,53 @@
 ---
 judul: "Tentang Kami"
-deskripsi: "Profil PT Solo Logo Indonesia, produsen pestisida dengan pabrik di Cikande, Banten."
+deskripsi: "PT Solo Logo Indonesia, perusahaan agrokimia sejak 2015 yang melayani formulasi dan pengemasan pestisida di Cikande, Banten."
 blocks:
   - type: judul_halaman
-    judul: "Tentang Solo Logo Indonesia"
-    deskripsi: "Herbisida, insektisida, dan fungisida yang diproduksi dan diuji di pabrik sendiri, didukung pendampingan teknis langsung untuk petani di lapangan."
+    judul: "Tentang Kami"
+    deskripsi: "Perusahaan agrokimia yang memberikan jasa fabrikasi, formulasi, dan pengemasan pestisida di dalam negeri."
   - type: teks
-    judul: "Siapa kami"
+    judul: "Tentang PT Solo Logo Indonesia"
     isi: |
-      Kantor pusat kami berada di Kelapa Gading, Jakarta Utara. Produksi dilakukan di pabrik kami di Kawasan Industri Cikande, Serang, Banten.
-  - type: layanan
-    judul: "Apa yang kami kerjakan"
-    intro: "Dari formulasi, produksi, sampai pendampingan petani di lahan."
+      Berdiri sejak 26 Januari 2015 berdasarkan Akta Pendirian No. 86 dan telah resmi terdaftar di Kementerian Hukum dan HAM Republik Indonesia melalui nomor AHU-0008181.AH.01.11.Tahun 2015, PT Solo Logo Indonesia hadir sebagai mitra terpercaya di industri formulasi dan pengemasan produk perlindungan tanaman.
+
+      ### Perjalanan & Perkembangan Usaha
+
+      - **Awal Mula:** Kami mengawali langkah sebagai perusahaan spesialis formulasi dan pengemasan herbisida di kawasan Pasar Kemis, Tangerang.
+      - **Ekspansi Layanan:** Seiring dengan kepercayaan klien yang terus bertumbuh, divisi Toll Manufacturing resmi diluncurkan pada tahun 2017.
+      - **Fasilitas Modern:** Demi mendukung kapasitas produksi yang lebih besar, kami kini beroperasi di kawasan industri Pancatama, Cikande, di atas lahan seluas 1,2 hektare.
+
+      ### Fasilitas & Kapasitas Produksi
+
+      Didukung oleh fasilitas pabrik yang modern dan terintegrasi, kami mampu mengolah dan mengemas beragam jenis pestisida berkualitas tinggi, yang meliputi:
+
+      - Herbisida, Insektisida, dan Fungisida
+      - Berbagai Bentuk Formulasi:
+          - Soluble Liquid (SL)
+          - Emulsifiable Concentrate (EC)
+          - Suspension Concentrate (SC)
+          - Wettable Powder (WP)
+
+      Komitmen kami adalah menghadirkan solusi formulasi dan pengemasan terbaik dengan standar kualitas yang tinggi untuk mendukung kemajuan sektor pertanian di Indonesia.
+  - type: angka
+    judul: "Pabrik kami dalam angka"
     items:
-      - judul: "Produksi pestisida"
-        deskripsi: "Berbagai jenis pestisida diproduksi di pabrik sendiri dengan laboratorium internal, dan diuji melalui pusat pengujian mutu nasional."
-      - judul: "Pesticide tooling"
-        deskripsi: "Layanan produksi untuk perusahaan yang memiliki merek sendiri, dengan standar mutu yang sama dengan produk kami."
-      - judul: "Riset dan pengembangan"
-        deskripsi: "Pengembangan formulasi baru dan uji efikasi untuk menjawab masalah gulma, hama, dan penyakit di lapangan."
-      - judul: "Pelatihan lapangan"
-        deskripsi: "Pendampingan petani di lapangan agar pestisida digunakan dengan aman dan optimal."
+      - angka: "±12.000 m²"
+        label: "Luas pabrik"
+      - angka: "6.000+ MT"
+        label: "Kapasitas produksi per tahun"
+      - angka: "153"
+        label: "Tenaga kerja"
+      - angka: "2015"
+        label: "Tahun berdiri"
+  - type: teks
+    judul: "Visi dan misi"
+    isi: |
+      **Visi:** menjadi perusahaan tolling terpercaya dengan mengedepankan pelayanan dan kepuasan pelanggan.
+
+      **Misi:** memberikan layanan jasa formulasi dan pengemasan kepada setiap pemegang nomor pendaftaran pestisida.
+  - type: ajakan
+    judul: "Butuh mitra formulasi dan pengemasan?"
+    teks: "Lihat detail layanan toll manufacturing kami."
+    tombol_teks: "Lihat layanan tolling"
+    tombol_link: "/layanan/"
 ---

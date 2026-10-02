@@ -7,8 +7,8 @@ const produk = (await getCollection('produk')).sort((a, b) => a.data.nama.locale
 ---
 <Base title="Produk" description="Katalog herbisida, insektisida, dan fungisida Solo Logo Indonesia.">
   <section class="page-head"><div class="wrap">
-    <h1>Katalog produk</h1>
-    <p>{produk.length} produk dalam {Object.keys(kategoriInfo).length} kategori. Pilih kategori untuk langsung melompat.</p>
+    <h1>Produk SLI</h1>
+    <p>Selain melayani toll manufacturing, kami memproduksi {produk.length} produk dengan merek sendiri. Pilih kategori untuk langsung melompat.</p>
   </div></section>
   <section class="section"><div class="wrap">
     <nav class="kat-nav" aria-label="Kategori produk">
